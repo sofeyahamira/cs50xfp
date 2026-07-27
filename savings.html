@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    | Savings
+{% endblock %}
+
+{% block main %}
+<br>
+<div class='container'>
+    <h1>Savings</h1>
+    <hr>
+    <h2 class="{% if savings_table['amount_in_savings'] == 0 %} text-primary
+    {% elif savings_table['amount_in_savings'] >= savings_table['required_savings'] %} text-success {% else %}
+    text-danger {% endif %}">
+        Amount in Savings: {{ savings_table['amount_in_savings'] }}</h2>
+    <br>
+    <h2>Saving up for: {{ savings_table['saving_up_for'] }}</h2>
+    <br>
+    <h2>Required Savings: {{ savings_table['required_savings'] }}</h2>
+    <br>
+    <a href="/savings_edit"><button type="button" class="btn btn-outline-primary">Edit</button></a>
+</div>
+{% endblock %}

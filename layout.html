@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="../static/bootstrap.css">
+        <link type="image/png" sizes="96x96" rel="icon" href="../static/icon.png">
+        <title>Finance Tracker {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">FINANCE TRACKER</a>
+
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="/savings">Savings</a>
+                      </li>
+
+                      {% if not session.get('user_id') %}
+                      <li class="nav-item">
+                        <a class="nav-link active" href="/register">Register</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                </div>
+
+                <a href="/settings"><button class="btn btn-secondary my-2 my-sm-0" >Settings</button></a>
+            </div>
+        </nav>
+        {% block main %}{% endblock %}
+        <div class='container'>
+          <hr>
+          <p><small>Favicon by <a href="https://icons8.com/">Icons8</a></small></p>
+        </div>
+    </body>
+</html>

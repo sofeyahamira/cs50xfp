@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+| Landing Page
+{% endblock %}
+
+{% block main %}
+<br>
+<div class="container">
+
+    <!-- First Card -->
+    <div class="row content-block right">
+        <div class="col-lg-4 col-md-12">
+            <div class="card text-white bg-primary mb-3" style="width: 100%;">
+                <div class="card-body">
+                    <h4 class="card-title">Finance Tracker</h4>
+                    <p class="card-text">Track your finances.</p>
+                    <p>Easy, simple, no distractions, no setup.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-12">
+            <img src="../static/New log.png" class="img-fluid" alt="Description of image">
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="/register"><button type="button" class="btn btn-outline-primary">Get Started</button></a>
+        </div>
+        <div class="col-auto">
+        <a href="/login"><button type="button" class="btn btn-outline-primary">Login</button></a>
+        </div>
+    </div>
+
+    <!-- Second Card -->
+    <br>
+    <div class="row content-block left">
+        <div class="col-lg-7 col-md-12">
+            <img src="../static/Dashboard.png" class="img-fluid" alt="Description of image">
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="card text-white bg-primary mb-3" style="width: 100%;">
+                <div class="card-body">
+                    <h4 class="card-title">Log</h4>
+                    <p class="card-text">Record every purchase, sale and transaction easily.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Card -->
+    <div class="row content-block right">
+        <div class="col-lg-4 col-md-12">
+            <div class="card text-white bg-primary mb-3" style="width: 100%;">
+                <div class="card-body">
+                    <h4 class="card-title">Savings</h4>
+                    <p class="card-text">Keep track of your savings.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-12">
+            <img src="../static/Savings.png" class="img-fluid" alt="Description of image">
+        </div>
+    </div>
+
+    <!-- Fourth Card -->
+    <div class="row content-block left">
+        <div class="col-lg-7 col-md-12">
+            <img src="../static/Edit Savings.png" class="img-fluid" alt="Description of image">
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="card text-white bg-primary mb-3" style="width: 100%;">
+                <div class="card-body">
+                    <h4 class="card-title">Savings  </h4>
+                    <p class="card-text">Save up for anything you want or need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="/register"><button type="button" class="btn btn-outline-primary">Get Started</button></a>
+        </div>
+        <div class="col-auto">
+        <a href="/login"><button type="button" class="btn btn-outline-primary">Login</button></a>
+        </div>
+    </div>
+    <br>
+
+<script src="../static/scripts.js"></script>
+{% endblock %}

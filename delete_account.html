@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    | Delete Account
+{% endblock %}
+
+{% block main %}
+<form action="/delete_account" method="post" class='container'>
+
+    <br>
+    <h1>Delete Account</h1>
+    <p>Please take note that deleting your account is an irreversible action.
+        You cannot retrieve your account once it has been deleted</p>
+    <p>To confirm deletion, please enter you username and password</p>
+
+    <div class="form-group {% if error_username or missing_username %} has-danger {% endif %}">
+
+        <!-- Enter Username -->
+        <label for="username" class="form-label mt-4">Username</label>
+        <input type="text" class="form-control {% if error_username or missing_username %} is-invalid {% endif %}"
+        id="username" name="username" placeholder="Enter username">
+
+        <!-- Error Handling -->
+        {% if missing_username %}
+        <div class="invalid-feedback">Username Requred</div>
+        {% endif %}
+
+        {% if error_username %}
+        <div class="invalid-feedback">Wrong Username</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group {% if error_password or missing_password %} has-danger {% endif %}">
+
+        <!-- Check Password -->
+        <label for="password" class="form-label mt-4">Password</label>
+        <input type="password" class="form-control {% if error_password or missing_password %} is-invalid
+        {% endif %}" id="password" name="password" placeholder="Enter Password" autocomplete="off">
+
+        <!-- Error Handling -->
+        {% if missing_password %}
+        <div class="invalid-feedback">Password Requred</div>
+        {% endif %}
+
+        {% if error_password %}
+        <div class="invalid-feedback">Wrong password</div>
+        {% endif %}
+    </div>
+
+    <br>
+    <div>
+        <button type="submit" class="btn btn-danger">Delete My Account</button>
+    </div>
+
+</form>
+{% endblock %}

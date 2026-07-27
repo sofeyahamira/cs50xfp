@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    | Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post" class='container'>
+        <div class="form-group {% if error_username or missing_username %} has-danger {% endif %}">
+
+            <!-- Enter Username -->
+            <label for="username" class="form-label mt-4">Username</label>
+
+            <!-- If block learnt from chatgpt -->
+            <input type="text" class="form-control {% if error_username or missing_username %} is-invalid {% endif %}" id="username" name="username" placeholder="e.g John Doe">
+
+            <!-- Error Handling -->
+            {% if missing_username %}
+            <div class="invalid-feedback">Username Requred</div>
+            {% endif %}
+
+            {% if error_username %}
+            <div class="invalid-feedback">Username not found</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group {% if error_password %} has-danger {% endif %}">
+
+            <!-- Check Password -->
+            <label for="password" class="form-label mt-4">Password</label>
+            <input type="password" class="form-control {% if error_password or missing_password %} is-invalid {% endif %}" id="password" name="password" placeholder="Enter Password" autocomplete="off">
+
+            <!-- Error Handling -->
+            {% if error_password %}
+            <div class="invalid-feedback">Invalid password</div>
+            {% endif %}
+
+            {% if missing_password %}
+            <div class="invalid-feedback">Password Requred</div>
+            {% endif %}
+        </div>
+
+        <br>
+        <div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+{% endblock %}

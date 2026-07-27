@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+| Log
+{% endblock %}
+
+{% block main %}
+<form action="/log" method="post" class='container'>
+    <br>
+    <h1>New Log</h1>
+
+    <!-- Select type of entry -->
+    <label for="transaction_type" class="form-label mt-4">Transaction Type</label>
+    <select class="form-select {% if invalid_option or empty_option %} is-invalid {% endif %}" id="transaction_type"
+        name="transaction_type">
+        <option disabled selected>Choose Type</option>
+        <option value='spent'>Spent</option>
+        <option value='recieved'>Recieved</option>
+    </select>
+
+    <!-- Error Handling -->
+    {% if invalid_option %}
+    <div class="invalid-feedback">Invalid Option</div>
+    {% endif %}
+
+    {% if empty_option %}
+    <div class="invalid-feedback">Field must not be empty</div>
+    {% endif %}
+
+    <!-- Notes about entry -->
+    <br>
+    <label for="notes"="form-label mt-4">Notes</label>
+    <input type="text" class="form-control {% if missing_notes %} is-invalid {% endif %}" id="notes" name="notes"
+        placeholder="e.g Groceries...">
+    <br>
+
+    <!-- Error Handling -->
+    {% if missing_notes %}
+    <div class="invalid-feedback">Field must not be empty</div>
+    {% endif %}
+
+    <!-- Amount -->
+    <br>
+    <label for="amount"="form-label mt-4">Amount</label>
+    <input type="number"
+        class="form-control {% if invalid_amount or missing_amount or not_enough or exceed_limit %} is-invalid {% endif %}"
+        id="amount" name="amount" max=1000000 placeholder="e.g 100...">
+
+    <!-- Error handling -->
+    {% if invalid_amount %}
+    <div class="invalid-feedback">Invalid Amount</div>
+    {% endif %}
+
+    {% if missing_amount %}
+    <div class="invalid-feedback">Field must not be empty</div>
+    {% endif %}
+
+    {% if not_enough %}
+    <div class="invalid-feedback">Insufficent Balance</div>
+    {% endif %}
+
+    {% if exceed_limit %}
+    <div class="invalid-feedback">Maximum Amount is 1,000,000</div>
+    {% endif %}
+
+    <br>
+    <div>
+        <button type="submit" class="btn btn-primary">Create New Log</button>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    | Edit Savings
+{% endblock %}
+
+{% block main %}
+<br>
+<form action="/savings_edit" method="post" class='container'>
+    <h1>Edit Savings</h1>
+
+    <!-- Amount in savings -->
+    <div class="form-group {% if error_username or missing_username %} has-danger {% endif %}">
+
+        <label for="amount" class="form-label mt-4">Amount in Savings</label>
+        <input type="number" class="form-control {% if not_enough or invalid_amount %}
+        is-invalid {% endif %}" id="amount" name="amount" placeholder="e.g 100">
+
+        <!-- Error handling -->
+        {% if invalid_amount %}
+        <div class="invalid-feedback">Invalid Amount</div>
+        {% endif %}
+
+        {% if not_enough %}
+        <div class="invalid-feedback">Insufficent Balance</div>
+        {% endif %}
+    </div>
+
+    <!-- Saving up for -->
+    <div class="form-group {% if error_username or missing_username %} has-danger {% endif %}">
+
+        <label for="saving_up_for" class="form-label mt-4">Saving Up For</label>
+        <input type="text" class="form-control" id="saving_up_for" name="saving_up_for" placeholder="e.g Car">
+    </div>
+
+    <!-- Required Savings -->
+    <div class="form-group {% if error_username or missing_username %} has-danger {% endif %}">
+        <!-- Amount in savings -->
+        <label for="required_savings" class="form-label mt-4">Required Savings</label>
+        <input type="number" class="form-control {% if invalid_amount %}
+        is-invalid {% endif %}" id="required_savings" name="required_savings" placeholder="e.g 100">
+
+        <!-- Error handling -->
+        {% if invalid_req_amount %}
+        <div class="invalid-feedback">Invalid Amount</div>
+        {% endif %}
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

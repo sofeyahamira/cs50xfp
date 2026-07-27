@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    | Homepage
+{% endblock %}
+
+{% block main %}
+<div class='container'>
+    <br>
+    <h1>Welcome, {{ username.upper() }}</h1>
+    <br>
+    <h2>Current Balance: {{ balance }}</h2>
+    <hr>
+    <br>
+    <h3>Logbook</h3>
+    <br>
+    <a href="/log"><button type="button" class="btn btn-outline-primary">Create New Log</button></a>
+    <br>
+
+    <!-- Logs Table -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Generate table -->
+            {% for log in logbook %}
+            <tr class="{% if log['type'] == 'recieved' %} table-success {% else %} table-danger {% endif %}">
+                <td>{{ str(log['type']).upper() }}</td>
+                <td>{{ log['note'] }}</td>
+                <td>{{ log['amount'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
